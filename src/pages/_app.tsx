@@ -45,10 +45,6 @@ import type { ReactNode } from 'react'
 import { type ReactElement } from 'react'
 import { Provider } from 'react-redux'
 
-if (typeof window !== 'undefined') {
-  window.__PARTICLE_ENVIRONMENT__ = process.env.NEXT_PUBLIC_PARTICLE_ENV
-}
-
 const GATEWAY_URL = IS_PRODUCTION || cgwDebugStorage.get() ? GATEWAY_URL_PRODUCTION : GATEWAY_URL_STAGING
 
 const reduxStore = makeStore()
