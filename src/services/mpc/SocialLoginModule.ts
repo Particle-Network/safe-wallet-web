@@ -52,11 +52,11 @@ function MpcModule(chain: ChainInfo): WalletInit {
         const getMPCProvider = () => _getMPCCoreKitInstance()?.provider
 
         const provider: any = {
-          on: (event, listener) => {
+          on: (event: any, listener: any) => {
             const web3 = assertDefined(getMPCProvider())
             web3.on(event, listener)
           },
-          request: (request) => {
+          request: (request: any) => {
             return new Promise<any>(async (resolve, reject) => {
               try {
                 /*
@@ -117,7 +117,7 @@ function MpcModule(chain: ChainInfo): WalletInit {
               }
             })
           },
-          removeListener: (event, listener) => {
+          removeListener: (event: any, listener: any) => {
             const web3 = assertDefined(getMPCProvider())
             return web3.removeListener(event, listener)
           },

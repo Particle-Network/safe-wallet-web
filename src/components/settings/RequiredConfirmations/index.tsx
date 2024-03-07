@@ -1,6 +1,7 @@
 import CheckWallet from '@/components/common/CheckWallet'
 import Track from '@/components/common/Track'
 import { TxModalContext } from '@/components/tx-flow'
+import { ChangeThresholdFlow } from '@/components/tx-flow/flows'
 import { SETTINGS_EVENTS } from '@/services/analytics'
 import { Box, Button, Grid, Typography } from '@mui/material'
 import { useContext } from 'react'

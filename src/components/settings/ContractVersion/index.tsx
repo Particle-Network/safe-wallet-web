@@ -1,6 +1,7 @@
 import CheckWallet from '@/components/common/CheckWallet'
 import ExternalLink from '@/components/common/ExternalLink'
 import { TxModalContext } from '@/components/tx-flow'
+import { UpdateSafeFlow } from '@/components/tx-flow/flows'
 import { LATEST_SAFE_VERSION } from '@/config/constants'
 import type { MasterCopy } from '@/hooks/useMasterCopies'
 import { MasterCopyDeployer, useMasterCopies } from '@/hooks/useMasterCopies'

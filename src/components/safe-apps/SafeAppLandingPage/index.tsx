@@ -8,7 +8,6 @@ import { useSafeAppFromManifest } from '@/hooks/safe-apps/useSafeAppFromManifest
 import useOnboard from '@/hooks/wallets/useOnboard'
 import useWallet from '@/hooks/wallets/useWallet'
 import { OVERVIEW_EVENTS, SAFE_APPS_EVENTS, trackEvent, trackSafeAppEvent } from '@/services/analytics'
-import { Errors, logError } from '@/services/exceptions'
 import { Box, CircularProgress, Paper } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
@@ -41,8 +40,8 @@ const SafeAppLanding = ({ appUrl, chain }: Props) => {
     if (!onboard) return
 
     trackEvent(OVERVIEW_EVENTS.OPEN_ONBOARD)
-
-    onboard.connectWallet().catch((e) => logError(Errors._302, e))
+    debugger
+    // onboard.connectWallet().catch((e) => logError(Errors._302, e))
   }
 
   const handleDemoClick = () => {
