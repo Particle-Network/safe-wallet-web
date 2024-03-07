@@ -13,7 +13,7 @@ import memoize from 'lodash/memoize'
 export const VESTING_URL =
   IS_PRODUCTION || cgwDebugStorage.get()
     ? 'https://safe-claiming-app-data.safe.global/allocations/'
-    : 'https://safe-claiming-app-data.staging.5afe.dev/allocations/'
+    : 'https://safe-claiming-app-data.safe.global/allocations/'
 
 export type VestingData = {
   tag: 'user' | 'ecosystem' | 'investor' | 'user_v2' // SEP #5

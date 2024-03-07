@@ -1,9 +1,9 @@
-import type { EthersError } from '@/utils/ethers-utils'
+import { WALLET_KEYS } from '@/hooks/wallets/consts'
 import { type ConnectedWallet } from '@/hooks/wallets/useOnboard'
 import { getWeb3ReadOnly, isSmartContract } from '@/hooks/wallets/web3'
-import { WALLET_KEYS } from '@/hooks/wallets/consts'
-import memoize from 'lodash/memoize'
 import { ONBOARD_MPC_MODULE_LABEL } from '@/services/mpc/SocialLoginModule'
+import type { EthersError } from '@/utils/ethers-utils'
+import memoize from 'lodash/memoize'
 
 const isWCRejection = (err: Error): boolean => {
   return /rejected/.test(err?.message)
@@ -19,12 +19,6 @@ export const isWalletRejection = (err: EthersError | Error): boolean => {
 
 export const isLedger = (wallet: ConnectedWallet): boolean => {
   return wallet.label.toUpperCase() === WALLET_KEYS.LEDGER
-}
-
-export const isHardwareWallet = (wallet: ConnectedWallet): boolean => {
-  return [WALLET_KEYS.LEDGER, WALLET_KEYS.TREZOR, WALLET_KEYS.KEYSTONE].includes(
-    wallet.label.toUpperCase() as WALLET_KEYS,
-  )
 }
 
 export const isSmartContractWallet = memoize(

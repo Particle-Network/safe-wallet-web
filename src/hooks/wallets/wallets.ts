@@ -1,18 +1,14 @@
-import { CYPRESS_MNEMONIC, TREZOR_APP_URL, TREZOR_EMAIL, WC_PROJECT_ID } from '@/config/constants'
-import type { WalletInit } from '@web3-onboard/common/dist/types.d'
+import { CYPRESS_MNEMONIC, WC_PROJECT_ID } from '@/config/constants'
 import type { ChainInfo } from '@safe-global/safe-gateway-typescript-sdk'
+import type { WalletInit } from '@web3-onboard/common/dist/types.d'
 
 import coinbaseModule from '@web3-onboard/coinbase'
 import injectedWalletModule from '@web3-onboard/injected-wallets'
-import keystoneModule from '@web3-onboard/keystone/dist/index'
-import ledgerModule from '@web3-onboard/ledger/dist/index'
-import trezorModule from '@web3-onboard/trezor'
 import walletConnect from '@web3-onboard/walletconnect'
 
+import { SOCIAL_WALLET_OPTIONS } from '@/services/mpc/config'
 import e2eWalletModule from '@/tests/e2e-wallet'
 import { CGW_NAMES, WALLET_KEYS } from './consts'
-import MpcModule from '@/services/mpc/SocialLoginModule'
-import { SOCIAL_WALLET_OPTIONS } from '@/services/mpc/config'
 
 const prefersDarkMode = (): boolean => {
   return window?.matchMedia('(prefers-color-scheme: dark)')?.matches
@@ -40,13 +36,13 @@ const walletConnectV2 = (chain: ChainInfo): WalletInit => {
 
 const WALLET_MODULES: { [key in WALLET_KEYS]: (chain: ChainInfo) => WalletInit } = {
   [WALLET_KEYS.INJECTED]: () => injectedWalletModule(),
-  [WALLET_KEYS.WALLETCONNECT_V2]: (chain) => walletConnectV2(chain),
+  [WALLET_KEYS.WALLETCONNECT_V2]: (chain: any) => walletConnectV2(chain),
   [WALLET_KEYS.COINBASE]: () => coinbaseModule({ darkMode: prefersDarkMode() }),
-  [WALLET_KEYS.SOCIAL]: (chain) => MpcModule(chain),
-  [WALLET_KEYS.LEDGER]: () => ledgerModule(),
-  [WALLET_KEYS.TREZOR]: () => trezorModule({ appUrl: TREZOR_APP_URL, email: TREZOR_EMAIL }),
-  [WALLET_KEYS.KEYSTONE]: () => keystoneModule(),
-}
+  [WALLET_KEYS.SOCIAL]: () => {},
+  [WALLET_KEYS.LEDGER]: () => {},
+  [WALLET_KEYS.TREZOR]: () => {},
+  [WALLET_KEYS.KEYSTONE]: () => {},
+} as any
 
 export const getAllWallets = (chain: ChainInfo): WalletInit[] => {
   return Object.values(WALLET_MODULES).map((module) => module(chain))

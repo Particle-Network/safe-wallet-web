@@ -22,6 +22,7 @@ const AppstoreButton = ({ placement }: { placement: keyof typeof LINKS }): React
   return (
     <a href={LINKS[placement]} target="_blank" rel="noreferrer" onClick={onClick}>
       <Image
+        data-sid="45365"
         src={isDarkMode ? '/images/common/appstore-light.svg' : '/images/common/appstore.svg'}
         alt="Download on the App Store"
         width={105}

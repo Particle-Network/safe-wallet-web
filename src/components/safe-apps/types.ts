@@ -51,3 +51,45 @@ export const isBrowserFeature = (featureKey: string): featureKey is AllowedFeatu
 export type AllowedFeatureSelection = { feature: AllowedFeatures; checked: boolean }
 
 export type SafeAppDataWithPermissions = SafeAppData & { safeAppsPermissions: AllowedFeatures[] }
+
+interface Balance {
+  ETH: string
+  // 可能还有其他的余额类型，根据实际情况添加
+}
+
+interface Account {
+  address: string
+  ens: string | null
+  uns: string | null
+  balance: Balance
+}
+
+interface WalletData {
+  accounts: Account[]
+  chains: any[]
+  icon: string
+  instance: string
+  label: string
+  provider: any
+  switchChain: any
+}
+
+export interface WalletAPI {
+  data: {
+    wallets: WalletData[]
+  }
+  state: {
+    get: () => {
+      wallets: WalletData[]
+    }
+  }
+}
+
+export interface WalletState {
+  label: string
+  icon: string
+  provider: any
+  accounts: any[]
+  chains: any[]
+  instance?: unknown
+}

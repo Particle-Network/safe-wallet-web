@@ -4,14 +4,7 @@
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect'
-import { TextEncoder, TextDecoder } from 'util'
-
-jest.mock('@web3-onboard/coinbase', () => jest.fn())
-jest.mock('@web3-onboard/injected-wallets', () => ({ ProviderLabel: { MetaMask: 'MetaMask' } }))
-jest.mock('@web3-onboard/keystone/dist/index', () => jest.fn())
-jest.mock('@web3-onboard/ledger/dist/index', () => jest.fn())
-jest.mock('@web3-onboard/trezor', () => jest.fn())
-jest.mock('@web3-onboard/walletconnect', () => jest.fn())
+import { TextDecoder, TextEncoder } from 'util'
 
 const mockOnboardState = {
   chains: [],
@@ -19,24 +12,6 @@ const mockOnboardState = {
   wallets: [],
   accountCenter: {},
 }
-
-jest.mock('@web3-onboard/core', () => () => ({
-  connectWallet: jest.fn(),
-  disconnectWallet: jest.fn(),
-  setChain: jest.fn(),
-  state: {
-    select: (key) => ({
-      subscribe: (next) => {
-        next(mockOnboardState[key])
-
-        return {
-          unsubscribe: jest.fn(),
-        }
-      },
-    }),
-    get: () => mockOnboardState,
-  },
-}))
 
 // to avoid failing tests in some environments
 const NumberFormat = Intl.NumberFormat
