@@ -13,6 +13,7 @@ import type { BaseTransaction } from '@safe-global/safe-apps-sdk'
 import type { SafeInfo } from '@safe-global/safe-gateway-typescript-sdk'
 
 function decodeOwnerManagementTransaction(safe: SafeInfo, transaction: BaseTransaction): SafeInfo {
+  debugger
   const safeDeployment = getSafeSingletonDeployment({ network: safe.chainId, version: safe.version ?? undefined })
 
   if (!safeDeployment) {

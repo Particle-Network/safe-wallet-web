@@ -11,6 +11,7 @@ import type { SingletonDeployment, DeploymentFilter } from '@safe-global/safe-de
 import type { ChainInfo, SafeInfo } from '@safe-global/safe-gateway-typescript-sdk'
 
 import { LATEST_SAFE_VERSION } from '@/config/constants'
+import { customContractNetworks } from '@/config/customChains'
 
 export const _tryDeploymentVersions = (
   getDeployment: (filter?: DeploymentFilter) => SingletonDeployment | undefined,
@@ -55,28 +56,44 @@ export const getSafeContractDeployment = (
   safeVersion: SafeInfo['version'],
 ): SingletonDeployment | undefined => {
   // Check if prior to 1.0.0 to keep minimum compatibility
+
   if (_isLegacy(safeVersion)) {
+    debugger
     return getSafeSingletonDeployment({ version: '1.0.0' })
   }
-
+  if (customContractNetworks[chain.chainId]) {
+    return
+  }
   const getDeployment = _isL2(chain, safeVersion) ? getSafeL2SingletonDeployment : getSafeSingletonDeployment
 
   return _tryDeploymentVersions(getDeployment, chain.chainId, safeVersion)
 }
 
 export const getMultiSendCallOnlyContractDeployment = (chainId: string, safeVersion: SafeInfo['version']) => {
+  if (customContractNetworks[chainId]) {
+    return
+  }
   return _tryDeploymentVersions(getMultiSendCallOnlyDeployment, chainId, safeVersion)
 }
 
 export const getFallbackHandlerContractDeployment = (chainId: string, safeVersion: SafeInfo['version']) => {
+  if (customContractNetworks[chainId]) {
+    return
+  }
   return _tryDeploymentVersions(getFallbackHandlerDeployment, chainId, safeVersion)
 }
 
 export const getProxyFactoryContractDeployment = (chainId: string, safeVersion: SafeInfo['version']) => {
+  if (customContractNetworks[chainId]) {
+    return
+  }
   const res = _tryDeploymentVersions(getProxyFactoryDeployment, chainId, safeVersion)
   return res
 }
 
 export const getSignMessageLibContractDeployment = (chainId: string, safeVersion: SafeInfo['version']) => {
+  if (customContractNetworks[chainId]) {
+    return
+  }
   return _tryDeploymentVersions(getSignMessageLibDeployment, chainId, safeVersion)
 }

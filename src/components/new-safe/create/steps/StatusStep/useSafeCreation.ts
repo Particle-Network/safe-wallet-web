@@ -160,8 +160,6 @@ export const useSafeCreation = (
 
   // Create or monitor Safe creation
   useEffect(() => {
-    console.log('>>>ddd', pendingSafe, isCreating)
-
     if (status !== getInitialCreationStatus(willRelay)) return
 
     if (pendingSafe?.txHash && !isCreating) {

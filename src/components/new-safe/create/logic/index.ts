@@ -27,7 +27,7 @@ import { EMPTY_DATA, ZERO_ADDRESS } from '@safe-global/protocol-kit/dist/src/uti
 import { getSafeInfo, type ChainInfo, type SafeInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import { backOff } from 'exponential-backoff'
 import type { UrlObject } from 'url'
-import { customContractNetworks } from '@/config/customContractNetworks'
+import { customContractNetworks } from '@/config/customChains'
 
 export type SafeCreationProps = {
   owners: string[]
@@ -65,12 +65,23 @@ const getSafeFactory = async (
   }
   const ethAdapter = await createEthersAdapter(ethersProvider)
 
-  const safeFactory = await SafeFactory.create({
+  const network = await ethersProvider.getNetwork()
+  const chainId = network.chainId.toString()
+
+  let params: any = {
     ethAdapter,
     safeVersion,
-    isL1SafeSingleton: false,
-    contractNetworks: customContractNetworks as any,
-  })
+  }
+
+  if (customContractNetworks[chainId]) {
+    params = {
+      ...params,
+      isL1SafeSingleton: false,
+      contractNetworks: customContractNetworks as any,
+    }
+  }
+
+  const safeFactory = await SafeFactory.create(params)
   return safeFactory
 }
 

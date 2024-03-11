@@ -15,9 +15,7 @@ import type { EthersAdapter, SafeContractEthers, SignMessageLibEthersContract } 
 import semver from 'semver'
 
 import type CompatibilityFallbackHandlerEthersContract from '@safe-global/protocol-kit/dist/src/adapters/ethers/contracts/CompatibilityFallbackHandler/CompatibilityFallbackHandlerEthersContract'
-import { customContractNetworks, ContractNetworksType } from '@/config/customContractNetworks'
-
-const MerlinTestContract = customContractNetworks['686868']
+import { customContractNetworks } from '@/config/customChains'
 
 // `UNKNOWN` is returned if the mastercopy does not match supported ones
 // @see https://github.com/safe-global/safe-client-gateway/blob/main/src/routes/safes/handlers/safes.rs#L28-L31
@@ -41,9 +39,7 @@ export const _getValidatedGetContractProps = (
 }
 
 // GnosisSafe
-
 const getGnosisSafeContractEthers = async (safe: SafeInfo, ethAdapter: EthersAdapter): Promise<SafeContractEthers> => {
-  debugger
   return ethAdapter.getSafeContract({
     customContractAddress: safe.address.value,
     ..._getValidatedGetContractProps(safe.version),
@@ -65,11 +61,15 @@ export const getCurrentGnosisSafeContract = async (
 
 export const getReadOnlyGnosisSafeContract = async (chain: ChainInfo, safeVersion: string = LATEST_SAFE_VERSION) => {
   const ethAdapter = createReadOnlyEthersAdapter()
-  const params = {
+
+  let params: any = {
     singletonDeployment: getSafeContractDeployment(chain, safeVersion),
     ..._getValidatedGetContractProps(safeVersion),
-    // customContractAddress: MerlinTestContract[ContractNetworksType.safeSingletonAddress],
-    customContractAddress: MerlinTestContract[ContractNetworksType.safeL2SingletonAddress], // ???
+  }
+
+  if (customContractNetworks[chain.chainId]) {
+    // customContractAddress: MerlinTestContract[ContractNetworksType.safeL2SingletonAddress], // ???
+    params.customContractAddress = customContractNetworks[chain.chainId].safeSingletonAddress
   }
   console.log('>>> getReadOnlyGnosisSafeContract', params)
 
@@ -95,10 +95,13 @@ export const getMultiSendCallOnlyContract = async (
 ) => {
   const ethAdapter = await createEthersAdapter(provider)
   const multiSendVersion = _getMinimumMultiSendCallOnlyVersion(safeVersion)
-  const params = {
+
+  let params: any = {
     singletonDeployment: getMultiSendCallOnlyContractDeployment(chainId, multiSendVersion),
     ..._getValidatedGetContractProps(safeVersion),
-    customContractAddress: MerlinTestContract[ContractNetworksType.multiSendCallOnlyAddress],
+  }
+  if (customContractNetworks[chainId]) {
+    params.customContractAddress = customContractNetworks[chainId].multiSendCallOnlyAddress
   }
   console.log('>>> getMultiSendCallOnlyContract', params)
 
@@ -108,10 +111,13 @@ export const getMultiSendCallOnlyContract = async (
 export const getReadOnlyMultiSendCallOnlyContract = async (chainId: string, safeVersion: SafeInfo['version']) => {
   const ethAdapter = createReadOnlyEthersAdapter()
   const multiSendVersion = _getMinimumMultiSendCallOnlyVersion(safeVersion)
-  const params = {
+
+  let params: any = {
     singletonDeployment: getMultiSendCallOnlyContractDeployment(chainId, multiSendVersion),
     ..._getValidatedGetContractProps(safeVersion),
-    customContractAddress: MerlinTestContract[ContractNetworksType.multiSendCallOnlyAddress],
+  }
+  if (customContractNetworks[chainId]) {
+    params.customContractAddress = customContractNetworks[chainId].multiSendCallOnlyAddress
   }
   console.log('>>> getReadOnlyMultiSendCallOnlyContract', params)
 
@@ -122,11 +128,15 @@ export const getReadOnlyMultiSendCallOnlyContract = async (chainId: string, safe
 
 export const getReadOnlyProxyFactoryContract = (chainId: string, safeVersion: SafeInfo['version']) => {
   const ethAdapter = createReadOnlyEthersAdapter()
-  const params = {
+
+  let params: any = {
     singletonDeployment: getProxyFactoryContractDeployment(chainId, safeVersion),
     ..._getValidatedGetContractProps(safeVersion),
-    customContractAddress: MerlinTestContract[ContractNetworksType.safeProxyFactoryAddress],
   }
+  if (customContractNetworks[chainId]) {
+    params.customContractAddress = customContractNetworks[chainId].safeProxyFactoryAddress
+  }
+
   console.log('>>> getReadOnlyProxyFactoryContract', params)
   return ethAdapter.getSafeProxyFactoryContract(params)
 }
@@ -138,11 +148,15 @@ export const getReadOnlyFallbackHandlerContract = async (
   safeVersion: SafeInfo['version'],
 ): Promise<CompatibilityFallbackHandlerEthersContract> => {
   const ethAdapter = createReadOnlyEthersAdapter()
-  const params = {
+
+  let params: any = {
     singletonDeployment: getFallbackHandlerContractDeployment(chainId, safeVersion),
     ..._getValidatedGetContractProps(safeVersion),
-    customContractAddress: MerlinTestContract[ContractNetworksType.fallbackHandlerAddress],
   }
+  if (customContractNetworks[chainId]) {
+    params.customContractAddress = customContractNetworks[chainId].fallbackHandlerAddress
+  }
+
   console.log('>>> getReadOnlyFallbackHandlerContract', params)
 
   return ethAdapter.getCompatibilityFallbackHandlerContract(params)
@@ -155,11 +169,16 @@ export const getReadOnlySignMessageLibContract = async (
   safeVersion: SafeInfo['version'],
 ): Promise<SignMessageLibEthersContract> => {
   const ethAdapter = createReadOnlyEthersAdapter()
-  const params = {
+
+  let params: any = {
     singletonDeployment: getSignMessageLibContractDeployment(chainId, safeVersion),
     ..._getValidatedGetContractProps(safeVersion),
-    customContractAddress: MerlinTestContract[ContractNetworksType.signMessageLibAddress],
   }
+
+  if (customContractNetworks[chainId]) {
+    params.customContractAddress = customContractNetworks[chainId].signMessageLibAddress
+  }
+
   console.log('>>> getReadOnlySignMessageLibContract', params)
 
   return ethAdapter.getSignMessageLibContract(params)
