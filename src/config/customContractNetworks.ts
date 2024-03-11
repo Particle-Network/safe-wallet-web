@@ -9,7 +9,6 @@ export enum ContractNetworksType {
   simulateTxAccessorAddress = 'simulateTxAccessorAddress',
   tokenCallbackAddress = 'tokenCallbackAddress',
   safeL2SingletonAddress = 'safeL2SingletonAddress',
-  safeProxyFactoryAbi = 'safeProxyFactoryAbi',
 }
 const safeProxyFactoryAbi = [
   {
@@ -177,7 +176,7 @@ const safeProxyFactoryAbi = [
 /**
  * Merlin testnet
  */
-const MerlinTestContractNetworks: Record<ContractNetworksType, string | any[]> = {
+const MerlinTestContractNetworks: Record<ContractNetworksType, string> = {
   /** safeSingletonAddress - Address of the Safe Singleton contract deployed on a specific network */
   safeSingletonAddress: '0x160eBf15e139D2bC4773923939e6f62994019e11',
   /** safeProxyFactoryAddress - Address of the SafeProxyFactory contract deployed on a specific network */
