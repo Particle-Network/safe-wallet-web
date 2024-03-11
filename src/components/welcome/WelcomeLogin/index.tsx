@@ -37,6 +37,7 @@ const WelcomeLogin = () => {
         router.push({ pathname: AppRoutes.welcome.accounts, query: router.query })
       } else {
         trackEvent(CREATE_SAFE_EVENTS.OPEN_SAFE_CREATION)
+        debugger
         router.push({ pathname: AppRoutes.newSafe.create, query: router.query })
       }
     }
@@ -45,7 +46,14 @@ const WelcomeLogin = () => {
   return (
     <Paper className={css.loginCard} data-testid="welcome-login">
       <Box data-sid="97255" className={css.loginContent}>
-        <SvgIcon component={SafeLogo} inheritViewBox sx={{ height: '24px', width: '80px', ml: '-8px' }} />
+        <div className={css.logo_box}>
+          <img
+            className={css.logo_box_img}
+            src="https://static.particle.network/token-list/btc/native.png?x-oss-process=image/format,png"
+            alt="btc"
+          />
+          <SvgIcon component={SafeLogo} inheritViewBox sx={{ height: '24px', width: '80px', ml: '-8px' }} />
+        </div>
 
         <Typography variant="h6" mt={6} fontWeight={700}>
           Get started

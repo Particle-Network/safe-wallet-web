@@ -100,6 +100,8 @@ export const useSafeCreation = (
           chain.chainId,
         )
 
+        console.log('>>>>', chain, provider, tx.from, safeParams)
+
         const gasLimit = await estimateSafeCreationGas(chain, provider, tx.from, safeParams)
 
         const options: DeploySafeProps['options'] = isEIP1559
@@ -158,6 +160,8 @@ export const useSafeCreation = (
 
   // Create or monitor Safe creation
   useEffect(() => {
+    console.log('>>>ddd', pendingSafe, isCreating)
+
     if (status !== getInitialCreationStatus(willRelay)) return
 
     if (pendingSafe?.txHash && !isCreating) {

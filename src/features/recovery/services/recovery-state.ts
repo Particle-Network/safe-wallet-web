@@ -1,6 +1,5 @@
 import { SENTINEL_ADDRESS } from '@safe-global/protocol-kit/dist/src/utils/constants'
 import memoize from 'lodash/memoize'
-import { getMultiSendCallOnlyDeployment } from '@safe-global/safe-deployments'
 import type { SafeInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import type { Delay } from '@gnosis.pm/zodiac'
 import type { TransactionAddedEvent } from '@gnosis.pm/zodiac/dist/cjs/types/Delay'
@@ -9,7 +8,7 @@ import { trimTrailingSlash } from '@/utils/url'
 import { sameAddress } from '@/utils/addresses'
 import { isMultiSendCalldata } from '@/utils/transaction-calldata'
 import { decodeMultiSendTxs } from '@/utils/transactions'
-
+import { getMultiSendCallOnlyDeployment } from '@safe-global/safe-deployments'
 export const MAX_RECOVERER_PAGE_SIZE = 100
 
 type AddedEvent = TransactionAddedEvent.Log
@@ -53,7 +52,7 @@ export function _isMaliciousRecovery({
     // Calling the Safe itself
     return !sameAddress(transaction.to, safeAddress)
   }
-
+  debugger
   const multiSendDeployment =
     getMultiSendCallOnlyDeployment({ network: chainId, version: version ?? undefined }) ??
     getMultiSendCallOnlyDeployment({ network: chainId, version: BASE_MULTI_SEND_CALL_ONLY_VERSION })

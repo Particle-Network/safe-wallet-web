@@ -73,7 +73,8 @@ export const getFallbackHandlerContractDeployment = (chainId: string, safeVersio
 }
 
 export const getProxyFactoryContractDeployment = (chainId: string, safeVersion: SafeInfo['version']) => {
-  return _tryDeploymentVersions(getProxyFactoryDeployment, chainId, safeVersion)
+  const res = _tryDeploymentVersions(getProxyFactoryDeployment, chainId, safeVersion)
+  return res
 }
 
 export const getSignMessageLibContractDeployment = (chainId: string, safeVersion: SafeInfo['version']) => {

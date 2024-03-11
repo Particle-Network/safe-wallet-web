@@ -17,3 +17,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.logo_box {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.logo_box_img {
+  width: 22px;
+}

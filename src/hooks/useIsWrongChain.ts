@@ -4,6 +4,8 @@ import useWallet from '@/hooks/wallets/useWallet'
 const useIsWrongChain = (): boolean => {
   const chainId = useChainId() // Target chain
   const wallet = useWallet() // wallet chain
+  // console.log('>>> useIsWrongChain', wallet?.chainId, chainId)
+
   return !wallet || !chainId ? false : wallet.chainId !== chainId
 }
 

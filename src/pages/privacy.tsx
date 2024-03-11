@@ -170,7 +170,7 @@ const SafePrivacyPolicy = () => (
         &nbsp;released under LGPL-3.0.
       </li>
       <li>
-        &ldquo;{'Safe{Wallet}'}&rdquo; refers to a web-based graphical user interface for Safe Accounts as well as a
+        &ldquo;{'BTC Safe{Wallet}'}&rdquo; refers to a web-based graphical user interface for Safe Accounts as well as a
         mobile application on Android and iOS.
       </li>
       <li>
@@ -214,10 +214,10 @@ const SafePrivacyPolicy = () => (
       BLOCKCHAIN WILL BECOME PUBLICLY AVAILABLE
     </p>
     <h3 id="section-4">4. How We Use Personal Data</h3>
-    <h4>4.1. When visiting our website and using {'Safe{Wallet}'}</h4>
+    <h4>4.1. When visiting our website and using {'BTC Safe{Wallet}'}</h4>
     <p>
-      When visiting our website or using {'Safe{Wallet}'}, we may collect and process personal data. The data will be
-      stored in different instances
+      When visiting our website or using {'BTC Safe{Wallet}'}, we may collect and process personal data. The data will
+      be stored in different instances
     </p>
     <ol>
       <li>
@@ -253,7 +253,7 @@ const SafePrivacyPolicy = () => (
     <ol start={4}>
       <li>
         When you create a Profile for an existing Safe Account for the purpose of allowing you to view and use them in
-        the {'Safe{Wallet}'}, we process your
+        the {'BTC Safe{Wallet}'}, we process your
         <ol>
           <li>public Wallet address, </li>
           <li>Safe Account balance, </li>
@@ -416,7 +416,7 @@ const SafePrivacyPolicy = () => (
       <li>range of managed funds</li>
     </ol>
     <p>
-      In addition, we may take a recording of you while testing {'Safe{Wallet}'} for internal and external use. The
+      In addition, we may take a recording of you while testing {'BTC Safe{Wallet}'} for internal and external use. The
       basis for this collection and processing is our legitimate business interest in monitoring and improving our
       services.
     </p>
@@ -579,7 +579,7 @@ const SafePrivacyPolicy = () => (
     </p>
     <h4>5.4. Mobile app stores</h4>
     <p>
-      {'Safe{Wallet}'} mobile apps are distributed via{' '}
+      {'BTC Safe{Wallet}'} mobile apps are distributed via{' '}
       <a href="https://www.apple.com/app-store/" target="_blank" rel="noreferrer">
         Apple AppStore
       </a>
@@ -593,7 +593,7 @@ const SafePrivacyPolicy = () => (
     </p>
     <h4>5.5. Fingerprint/Touch ID/ Face ID</h4>
     <p>
-      We enable the user to unlock the {'Safe{Wallet}'} mobile app via biometrics information (touch ID or face ID).
+      We enable the user to unlock the {'BTC Safe{Wallet}'} mobile app via biometrics information (touch ID or face ID).
       This is a feature of the operating system. We do not store any of this data. Instead, the API of the operating
       system is used to validate the user input. If you have any further questions you should consult with your
       preferred mobile device provider or manufacturer.
@@ -999,7 +999,7 @@ const PrivacyPolicy: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{'Safe{Wallet} – Privacy policy'}</title>
+        <title>{'BTC Safe{Wallet} – Privacy policy'}</title>
       </Head>
 
       <main>{IS_OFFICIAL_HOST && <SafePrivacyPolicy />}</main>

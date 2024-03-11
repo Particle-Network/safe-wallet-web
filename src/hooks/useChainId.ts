@@ -46,6 +46,7 @@ export const useChainId = (): string => {
   const session = useAppSelector(selectSession)
   const urlChainId = useUrlChainId()
   const walletChainId = useWalletChainId()
+  // console.log('>>> useChainId', urlChainId, session.lastChainId, walletChainId, defaultChainId)
 
   return urlChainId || session.lastChainId || walletChainId || defaultChainId
 }

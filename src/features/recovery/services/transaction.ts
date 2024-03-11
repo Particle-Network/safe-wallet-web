@@ -1,5 +1,4 @@
 import { Interface } from 'ethers'
-import { getSafeSingletonDeployment } from '@safe-global/safe-deployments'
 import { SENTINEL_ADDRESS } from '@safe-global/protocol-kit/dist/src/utils/constants'
 import { OperationType } from '@safe-global/safe-core-sdk-types'
 import { sameAddress } from '@/utils/addresses'
@@ -8,6 +7,7 @@ import type { MetaTransactionData } from '@safe-global/safe-core-sdk-types'
 import type { AddressEx, SafeInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import type { RecoveryQueueItem } from '@/features/recovery/services/recovery-state'
 import type { Provider } from 'ethers'
+import { getSafeSingletonDeployment } from '@safe-global/safe-deployments'
 
 export function getRecoveryProposalTransactions({
   safe,
@@ -18,6 +18,7 @@ export function getRecoveryProposalTransactions({
   newThreshold: number
   newOwners: Array<AddressEx>
 }): Array<MetaTransactionData> {
+  debugger
   const safeDeployment = getSafeSingletonDeployment({ network: safe.chainId, version: safe.version ?? undefined })
 
   if (!safeDeployment) {

@@ -106,7 +106,7 @@ export const CreateSafeStatus = ({ data, setProgressColor, setStep }: StepRender
           <Box data-sid="75976" className={layoutCss.row}>
             <Track {...OVERVIEW_EVENTS.OPEN_SAFE} label={OPEN_SAFE_LABELS.after_create}>
               <Button data-sid="41990" data-testid="start-using-safe-btn" variant="contained" onClick={onFinish}>
-                Start using {'Safe{Wallet}'}
+                Start using {'BTC Safe{Wallet}'}
               </Button>
             </Track>
           </Box>

@@ -64,12 +64,13 @@ export const estimateBatchDeploymentTransaction = async (
   const customContracts = sdk.getContractManager().contractNetworks?.[chainId]
   const safeVersion = await sdk.getContractVersion()
   const ethAdapter = sdk.getEthAdapter()
+  debugger
   const fallbackHandlerContract = await getCompatibilityFallbackHandlerContract({
     ethAdapter,
     safeVersion,
     customContracts,
   })
-
+  debugger
   const simulateTxAccessorContract = await getSimulateTxAccessorContract({
     ethAdapter,
     safeVersion,
