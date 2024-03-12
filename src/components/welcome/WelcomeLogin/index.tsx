@@ -37,7 +37,6 @@ const WelcomeLogin = () => {
         router.push({ pathname: AppRoutes.welcome.accounts, query: router.query })
       } else {
         trackEvent(CREATE_SAFE_EVENTS.OPEN_SAFE_CREATION)
-        debugger
         router.push({ pathname: AppRoutes.newSafe.create, query: router.query })
       }
     }

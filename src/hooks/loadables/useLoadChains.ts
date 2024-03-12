@@ -6,8 +6,8 @@ import { customChains } from '@/config/customChains'
 
 const getConfigs = async (): Promise<ChainInfo[]> => {
   const data = await getChainsConfig()
-
-  return (data.results || []).filter((item) => item.chainId !== '11155111').concat(customChains as any)
+  // return (data.results || []).filter((item) => item.chainId !== '11155111').concat(customChains as any)
+  return (data.results || []).concat(customChains as any)
 }
 
 export const useLoadChains = (): AsyncResult<ChainInfo[]> => {
