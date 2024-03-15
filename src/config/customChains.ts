@@ -1,4 +1,4 @@
-import { Merlin, MerlinTestnet } from '@particle-network/chains'
+import { EthereumSepolia } from '@particle-network/chains'
 
 export enum ContractNetworksType {
   safeSingletonAddress = 'safeSingletonAddress',
@@ -14,111 +14,25 @@ export enum ContractNetworksType {
 }
 
 export const customChains = [
-  {
-    chainId: Merlin.id.toString(),
-    chainName: Merlin.name,
-    description: Merlin.fullname,
-    chainLogoUri: Merlin.icon,
-    l2: true,
-    isTestnet: false,
-    nativeCurrency: {
-      name: Merlin.nativeCurrency.name,
-      symbol: Merlin.nativeCurrency.symbol,
-      decimals: Merlin.nativeCurrency.decimals,
-      logoUri: Merlin.nativeIcon,
-    },
-    transactionService: Merlin.rpcUrl,
-    blockExplorerUriTemplate: {
-      address: Merlin.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
-      txHash: Merlin.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
-      api:
-        Merlin.blockExplorerUrl?.replace(/\/$/, '') +
-        '/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}',
-    },
-    disabledWallets: [],
-    ensRegistryAddress: '',
-    features: [],
-    gasPrice: [],
-    publicRpcUri: {
-      authentication: 'NO_AUTHENTICATION',
-      value: Merlin.rpcUrl,
-    },
-    rpcUri: {
-      authentication: 'API_KEY_PATH',
-      value: Merlin.rpcUrl,
-    },
-    safeAppsRpcUri: {
-      authentication: 'API_KEY_PATH',
-      value: Merlin.rpcUrl,
-    },
-    shortName: 'ml',
-    theme: {
-      textColor: '#ffffff',
-      backgroundColor: '#B8AAD5',
-    },
-  },
-  {
-    chainId: MerlinTestnet.id.toString(),
-    chainName: MerlinTestnet.name,
-    description: MerlinTestnet.fullname,
-    chainLogoUri: MerlinTestnet.icon,
-    l2: true,
-    isTestnet: true,
-    nativeCurrency: {
-      name: MerlinTestnet.nativeCurrency.name,
-      symbol: MerlinTestnet.nativeCurrency.symbol,
-      decimals: MerlinTestnet.nativeCurrency.decimals,
-      logoUri: MerlinTestnet.nativeIcon,
-    },
-    transactionService: MerlinTestnet.rpcUrl,
-    blockExplorerUriTemplate: {
-      address: MerlinTestnet.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
-      txHash: MerlinTestnet.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
-      api:
-        MerlinTestnet.blockExplorerUrl?.replace(/\/$/, '') +
-        '/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}',
-    },
-    disabledWallets: [],
-    ensRegistryAddress: '',
-    features: [],
-    gasPrice: [],
-    publicRpcUri: {
-      authentication: 'NO_AUTHENTICATION',
-      value: MerlinTestnet.rpcUrl,
-    },
-    rpcUri: {
-      authentication: 'NO_AUTHENTICATION',
-      value: MerlinTestnet.rpcUrl,
-    },
-    safeAppsRpcUri: {
-      authentication: 'NO_AUTHENTICATION',
-      value: MerlinTestnet.rpcUrl,
-    },
-    shortName: 'mlt',
-    theme: {
-      textColor: '#ffffff',
-      backgroundColor: '#B8AAD5',
-    },
-  },
   // {
-  //   chainId: EthereumSepolia.id.toString(),
-  //   chainName: EthereumSepolia.name + ' ff',
-  //   description: EthereumSepolia.fullname + ' ff',
-  //   chainLogoUri: EthereumSepolia.icon,
-  //   l2: false,
-  //   isTestnet: true,
+  //   chainId: Merlin.id.toString(),
+  //   chainName: Merlin.name,
+  //   description: Merlin.fullname,
+  //   chainLogoUri: Merlin.icon,
+  //   l2: true,
+  //   isTestnet: false,
   //   nativeCurrency: {
-  //     name: EthereumSepolia.nativeCurrency.name,
-  //     symbol: EthereumSepolia.nativeCurrency.symbol,
-  //     decimals: EthereumSepolia.nativeCurrency.decimals,
-  //     logoUri: EthereumSepolia.nativeIcon,
+  //     name: Merlin.nativeCurrency.name,
+  //     symbol: Merlin.nativeCurrency.symbol,
+  //     decimals: Merlin.nativeCurrency.decimals,
+  //     logoUri: Merlin.nativeIcon,
   //   },
-  //   transactionService: EthereumSepolia.rpcUrl,
+  //   transactionService: Merlin.rpcUrl,
   //   blockExplorerUriTemplate: {
-  //     address: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
-  //     txHash: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
+  //     address: Merlin.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
+  //     txHash: Merlin.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
   //     api:
-  //       EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') +
+  //       Merlin.blockExplorerUrl?.replace(/\/$/, '') +
   //       '/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}',
   //   },
   //   disabledWallets: [],
@@ -127,22 +41,108 @@ export const customChains = [
   //   gasPrice: [],
   //   publicRpcUri: {
   //     authentication: 'NO_AUTHENTICATION',
-  //     value: EthereumSepolia.rpcUrl,
+  //     value: Merlin.rpcUrl,
   //   },
   //   rpcUri: {
   //     authentication: 'API_KEY_PATH',
-  //     value: EthereumSepolia.rpcUrl,
+  //     value: Merlin.rpcUrl,
   //   },
   //   safeAppsRpcUri: {
   //     authentication: 'API_KEY_PATH',
-  //     value: EthereumSepolia.rpcUrl,
+  //     value: Merlin.rpcUrl,
   //   },
-  //   shortName: 'esaa',
+  //   shortName: 'ml',
   //   theme: {
   //     textColor: '#ffffff',
   //     backgroundColor: '#B8AAD5',
   //   },
   // },
+  // {
+  //   chainId: MerlinTestnet.id.toString(),
+  //   chainName: MerlinTestnet.name,
+  //   description: MerlinTestnet.fullname,
+  //   chainLogoUri: MerlinTestnet.icon,
+  //   l2: true,
+  //   isTestnet: true,
+  //   nativeCurrency: {
+  //     name: MerlinTestnet.nativeCurrency.name,
+  //     symbol: MerlinTestnet.nativeCurrency.symbol,
+  //     decimals: MerlinTestnet.nativeCurrency.decimals,
+  //     logoUri: MerlinTestnet.nativeIcon,
+  //   },
+  //   transactionService: MerlinTestnet.rpcUrl,
+  //   blockExplorerUriTemplate: {
+  //     address: MerlinTestnet.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
+  //     txHash: MerlinTestnet.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
+  //     api:
+  //       MerlinTestnet.blockExplorerUrl?.replace(/\/$/, '') +
+  //       '/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}',
+  //   },
+  //   disabledWallets: [],
+  //   ensRegistryAddress: '',
+  //   features: [],
+  //   gasPrice: [],
+  //   publicRpcUri: {
+  //     authentication: 'NO_AUTHENTICATION',
+  //     value: MerlinTestnet.rpcUrl,
+  //   },
+  //   rpcUri: {
+  //     authentication: 'NO_AUTHENTICATION',
+  //     value: MerlinTestnet.rpcUrl,
+  //   },
+  //   safeAppsRpcUri: {
+  //     authentication: 'NO_AUTHENTICATION',
+  //     value: MerlinTestnet.rpcUrl,
+  //   },
+  //   shortName: 'mlt',
+  //   theme: {
+  //     textColor: '#ffffff',
+  //     backgroundColor: '#B8AAD5',
+  //   },
+  // },
+  {
+    chainId: EthereumSepolia.id.toString(),
+    chainName: EthereumSepolia.name + ' ff',
+    description: EthereumSepolia.fullname + ' ff',
+    chainLogoUri: EthereumSepolia.icon,
+    l2: false,
+    isTestnet: true,
+    nativeCurrency: {
+      name: EthereumSepolia.nativeCurrency.name,
+      symbol: EthereumSepolia.nativeCurrency.symbol,
+      decimals: EthereumSepolia.nativeCurrency.decimals,
+      logoUri: EthereumSepolia.nativeIcon,
+    },
+    transactionService: EthereumSepolia.rpcUrl,
+    blockExplorerUriTemplate: {
+      address: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
+      txHash: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
+      api:
+        EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') +
+        '/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}',
+    },
+    disabledWallets: [],
+    ensRegistryAddress: '',
+    features: [],
+    gasPrice: [],
+    publicRpcUri: {
+      authentication: 'NO_AUTHENTICATION',
+      value: EthereumSepolia.rpcUrl,
+    },
+    rpcUri: {
+      authentication: 'API_KEY_PATH',
+      value: EthereumSepolia.rpcUrl,
+    },
+    safeAppsRpcUri: {
+      authentication: 'API_KEY_PATH',
+      value: EthereumSepolia.rpcUrl,
+    },
+    shortName: 'esaa',
+    theme: {
+      textColor: '#ffffff',
+      backgroundColor: '#B8AAD5',
+    },
+  },
 ]
 
 const safeProxyFactoryAbi = [

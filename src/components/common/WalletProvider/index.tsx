@@ -81,8 +81,6 @@ const WalletProvider = ({ children }: { children: ReactNode }): ReactElement => 
 
   useEffect(() => {
     if (currentAccount && provider) {
-      console.log('fff>>>>', provider)
-
       setWallet({
         address: checksumAddress(currentAccount),
         balance: '',

@@ -193,7 +193,6 @@ export const estimateSafeCreationGas = async (
   safeParams: SafeCreationProps,
 ): Promise<bigint> => {
   const readOnlyProxyFactoryContract = await getReadOnlyProxyFactoryContract(chain.chainId, LATEST_SAFE_VERSION)
-  console.log('>>> safeParams', safeParams)
 
   const encodedSafeCreationTx = await encodeSafeCreationTx({ ...safeParams, chain })
 
@@ -202,8 +201,6 @@ export const estimateSafeCreationGas = async (
     to: await readOnlyProxyFactoryContract.getAddress(),
     data: encodedSafeCreationTx,
   }
-
-  console.log('>>> estimateSafeCreationGas', params)
 
   const gas = await provider.estimateGas(params)
 

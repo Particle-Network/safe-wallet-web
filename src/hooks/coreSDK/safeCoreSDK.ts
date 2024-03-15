@@ -1,7 +1,6 @@
 import chains from '@/config/chains'
 import type { UndeployedSafe } from '@/features/counterfactual/store/undeployedSafesSlice'
 import { getWeb3ReadOnly } from '@/hooks/wallets/web3'
-import { getSafeSingletonDeployment, getSafeL2SingletonDeployment } from '@safe-global/safe-deployments'
 import ExternalStore from '@/services/ExternalStore'
 import { Gnosis_safe__factory } from '@/types/contracts'
 import { invariant } from '@/utils/helpers'
@@ -12,7 +11,7 @@ import { EthersAdapter } from '@safe-global/protocol-kit'
 import type { SafeInfo } from '@safe-global/safe-gateway-typescript-sdk'
 import { ethers } from 'ethers'
 import semverSatisfies from 'semver/functions/satisfies'
-import { isValidMasterCopy } from '@/services/contracts/safeContracts'
+import { customContractNetworks } from '@/config/customChains'
 
 export const isLegacyVersion = (safeVersion: string): boolean => {
   const LEGACY_VERSION = '<1.3.0'
@@ -75,37 +74,39 @@ export const initSafeSDK = async ({
   let isL1SafeSingleton = chainId === chains.eth
 
   // If it is an official deployment we should still initiate the safeSDK
-  if (!isValidMasterCopy(implementationVersionState)) {
-    const masterCopy = implementation
-    debugger
-    const safeL1Deployment = getSafeSingletonDeployment({ network: chainId, version: safeVersion })
-    const safeL2Deployment = getSafeL2SingletonDeployment({ network: chainId, version: safeVersion })
+  // TODO
+  // if (!isValidMasterCopy(implementationVersionState)) {
+  //   const masterCopy = implementation
+  //   debugger
+  //   const safeL1Deployment = getSafeSingletonDeployment({ network: chainId, version: safeVersion })
+  //   const safeL2Deployment = getSafeL2SingletonDeployment({ network: chainId, version: safeVersion })
 
-    isL1SafeSingleton = masterCopy === safeL1Deployment?.networkAddresses[chainId]
-    const isL2SafeMasterCopy = masterCopy === safeL2Deployment?.networkAddresses[chainId]
+  //   isL1SafeSingleton = masterCopy === safeL1Deployment?.networkAddresses[chainId]
+  //   const isL2SafeMasterCopy = masterCopy === safeL2Deployment?.networkAddresses[chainId]
 
-    // Unknown deployment, which we do not want to support
-    if (!isL1SafeSingleton && !isL2SafeMasterCopy) {
-      return Promise.resolve(undefined)
-    }
-  }
-  // Legacy Safe contracts
-  if (isLegacyVersion(safeVersion)) {
-    isL1SafeSingleton = true
-  }
+  //   // Unknown deployment, which we do not want to support
+  //   if (!isL1SafeSingleton && !isL2SafeMasterCopy) {
+  //     return Promise.resolve(undefined)
+  //   }
+  // }
+  // // Legacy Safe contracts
+  // if (isLegacyVersion(safeVersion)) {
+  //   isL1SafeSingleton = true
+  // }
 
-  if (undeployedSafe) {
-    return Safe.create({
-      ethAdapter: createReadOnlyEthersAdapter(provider),
-      isL1SafeSingleton: isL1SafeSingleton,
-      predictedSafe: undeployedSafe.props,
-    })
-  }
+  // if (undeployedSafe) {
+  //   return Safe.create({
+  //     ethAdapter: createReadOnlyEthersAdapter(provider),
+  //     isL1SafeSingleton: isL1SafeSingleton,
+  //     predictedSafe: undeployedSafe.props,
+  //   })
+  // }
 
   return Safe.create({
     ethAdapter: createReadOnlyEthersAdapter(provider),
     safeAddress: address,
     isL1SafeSingleton: isL1SafeSingleton,
+    contractNetworks: customContractNetworks,
   })
 }
 

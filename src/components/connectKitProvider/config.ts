@@ -1,4 +1,4 @@
-import { Ethereum, chains, type ChainInfo } from '@particle-network/chains'
+import { Merlin, MerlinTestnet } from '@particle-network/chains'
 import { evmWallets, type ConnectConfig } from '@particle-network/connectors'
 
 const options: ConnectConfig = {
@@ -9,7 +9,7 @@ const options: ConnectConfig = {
     logo: '/favicon.ico',
     projectName: 'Particle - Safe Wallet WEB',
   },
-  chains: [chains.getEVMChainInfoById(11155111) as ChainInfo, Ethereum],
+  chains: [Merlin, MerlinTestnet],
   wallet: {
     //optional: particle wallet config
     visible: true, //display wallet button when connect particle success.
