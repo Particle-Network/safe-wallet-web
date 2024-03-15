@@ -1,5 +1,3 @@
-import { EthereumSepolia } from '@particle-network/chains'
-
 export enum ContractNetworksType {
   safeSingletonAddress = 'safeSingletonAddress',
   safeProxyFactoryAddress = 'safeProxyFactoryAddress',
@@ -100,49 +98,49 @@ export const customChains = [
   //     backgroundColor: '#B8AAD5',
   //   },
   // },
-  {
-    chainId: EthereumSepolia.id.toString(),
-    chainName: EthereumSepolia.name + ' ff',
-    description: EthereumSepolia.fullname + ' ff',
-    chainLogoUri: EthereumSepolia.icon,
-    l2: false,
-    isTestnet: true,
-    nativeCurrency: {
-      name: EthereumSepolia.nativeCurrency.name,
-      symbol: EthereumSepolia.nativeCurrency.symbol,
-      decimals: EthereumSepolia.nativeCurrency.decimals,
-      logoUri: EthereumSepolia.nativeIcon,
-    },
-    transactionService: EthereumSepolia.rpcUrl,
-    blockExplorerUriTemplate: {
-      address: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
-      txHash: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
-      api:
-        EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') +
-        '/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}',
-    },
-    disabledWallets: [],
-    ensRegistryAddress: '',
-    features: [],
-    gasPrice: [],
-    publicRpcUri: {
-      authentication: 'NO_AUTHENTICATION',
-      value: EthereumSepolia.rpcUrl,
-    },
-    rpcUri: {
-      authentication: 'API_KEY_PATH',
-      value: EthereumSepolia.rpcUrl,
-    },
-    safeAppsRpcUri: {
-      authentication: 'API_KEY_PATH',
-      value: EthereumSepolia.rpcUrl,
-    },
-    shortName: 'esaa',
-    theme: {
-      textColor: '#ffffff',
-      backgroundColor: '#B8AAD5',
-    },
-  },
+  // {
+  //   chainId: EthereumSepolia.id.toString(),
+  //   chainName: EthereumSepolia.name,
+  //   description: EthereumSepolia.fullname,
+  //   chainLogoUri: EthereumSepolia.icon,
+  //   l2: false,
+  //   isTestnet: true,
+  //   nativeCurrency: {
+  //     name: EthereumSepolia.nativeCurrency.name,
+  //     symbol: EthereumSepolia.nativeCurrency.symbol,
+  //     decimals: EthereumSepolia.nativeCurrency.decimals,
+  //     logoUri: EthereumSepolia.nativeIcon,
+  //   },
+  //   transactionService: EthereumSepolia.rpcUrl,
+  //   blockExplorerUriTemplate: {
+  //     address: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/address/{{address}}',
+  //     txHash: EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') + '/tx/{{txHash}}',
+  //     api:
+  //       EthereumSepolia.blockExplorerUrl?.replace(/\/$/, '') +
+  //       '/api?module={{module}}&action={{action}}&address={{address}}&apiKey={{apiKey}}',
+  //   },
+  //   disabledWallets: [],
+  //   ensRegistryAddress: '',
+  //   features: [],
+  //   gasPrice: [],
+  //   publicRpcUri: {
+  //     authentication: 'NO_AUTHENTICATION',
+  //     value: EthereumSepolia.rpcUrl,
+  //   },
+  //   rpcUri: {
+  //     authentication: 'API_KEY_PATH',
+  //     value: EthereumSepolia.rpcUrl,
+  //   },
+  //   safeAppsRpcUri: {
+  //     authentication: 'API_KEY_PATH',
+  //     value: EthereumSepolia.rpcUrl,
+  //   },
+  //   shortName: 'esaa',
+  //   theme: {
+  //     textColor: '#ffffff',
+  //     backgroundColor: '#B8AAD5',
+  //   },
+  // },
 ]
 
 const safeProxyFactoryAbi = [
