@@ -69,7 +69,7 @@ export const getReadOnlyGnosisSafeContract = async (chain: ChainInfo, safeVersio
 
   if (customContractNetworks[chain.chainId]) {
     // customContractAddress: MerlinTestContract[ContractNetworksType.safeL2SingletonAddress], // ???
-    params.customContractAddress = customContractNetworks[chain.chainId].safeSingletonAddress
+    params.customContractAddress = customContractNetworks[chain.chainId].safeL2SingletonAddress
   }
   console.log('>>> getReadOnlyGnosisSafeContract', params)
 

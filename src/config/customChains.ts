@@ -299,6 +299,7 @@ const MerlinContractNetworks: Record<ContractNetworksType | string, any> = {
   createCallAddress: '0x674DD424530BC6a43400d67ee79DeB7E31EC8044',
   simulateTxAccessorAddress: '0xe703EacF42dB02F2e4A48C37ac3123c505609882',
   tokenCallbackAddress: '0x21b857d89A6704F236699F6cc6f1719490BbE108',
+  safeProxyFactoryAbi,
 }
 
 /**
