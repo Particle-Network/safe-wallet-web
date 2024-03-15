@@ -4,7 +4,6 @@ import { ImplementationVersionState } from '@safe-global/safe-gateway-typescript
 import useSafeInfo from './useSafeInfo'
 import { useAppDispatch } from '@/store'
 import { AppRoutes } from '@/config/routes'
-import { isValidMasterCopy } from '@/services/contracts/safeContracts'
 import { useRouter } from 'next/router'
 import useIsSafeOwner from './useIsSafeOwner'
 import { isValidSafeVersion } from './coreSDK/safeCoreSDK'
@@ -133,22 +132,23 @@ const useSafeNotifications = (): void => {
    */
 
   useEffect(() => {
-    if (isValidMasterCopy(safe.implementationVersionState)) return
+    return
+    // if (isValidMasterCopy(safe.implementationVersionState)) return
 
-    const id = dispatch(
-      showNotification({
-        variant: 'warning',
-        message: `This Safe Account was created with an unsupported base contract.
-           The web interface might not work correctly.
-           We recommend using the command line interface instead.`,
-        groupKey: 'invalid-mastercopy',
-        link: CLI_LINK,
-      }),
-    )
+    // const id = dispatch(
+    //   showNotification({
+    //     variant: 'warning',
+    //     message: `This Safe Account was created with an unsupported base contract.
+    //        The web interface might not work correctly.
+    //        We recommend using the command line interface instead.`,
+    //     groupKey: 'invalid-mastercopy',
+    //     link: CLI_LINK,
+    //   }),
+    // )
 
-    return () => {
-      dispatch(closeNotification({ id }))
-    }
+    // return () => {
+    //   dispatch(closeNotification({ id }))
+    // }
   }, [dispatch, safe.implementationVersionState])
 }
 
