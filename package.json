@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev -p 3047",
-    "start": "next dev -p 3047",
+    "start": "next start",
     "build": "next build",
     "lint": "tsc && next lint",
     "lint:fix": "next lint --fix",
@@ -144,6 +144,7 @@
     "typechain": "^8.3.2",
     "typescript": "^5.3.3",
     "typescript-plugin-css-modules": "^4.2.2",
+    "vercel": "^33.6.0",
     "webpack": "^5.88.2"
   },
   "nextBundleAnalysis": {
