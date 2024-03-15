@@ -15,8 +15,8 @@ import { Notifications } from './notification-mapper'
 import type { WebhookEvent } from './webhook-types'
 import type { PushNotificationPreferences, PushNotificationPrefsKey } from '@/services/push-notifications/preferences'
 
-const GATEWAY_URL_PRODUCTION = process.env.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION || 'https://safe-client.safe.global'
-const GATEWAY_URL_STAGING = process.env.NEXT_PUBLIC_GATEWAY_URL_STAGING || 'https://safe-client.safe.global'
+const GATEWAY_URL_PRODUCTION = process.env.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION as string
+const GATEWAY_URL_STAGING = process.env.NEXT_PUBLIC_GATEWAY_URL_STAGING as string
 
 // localStorage cannot be accessed in service workers so we reference the flag from the environment
 const GATEWAY_URL = FIREBASE_IS_PRODUCTION ? GATEWAY_URL_PRODUCTION : GATEWAY_URL_STAGING
